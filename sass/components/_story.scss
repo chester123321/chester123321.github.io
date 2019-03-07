@@ -1,0 +1,66 @@
+.story {
+    background-color: rgba($color-white, .6);
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    & > * {
+        transform: skewX(12deg);
+    }
+
+    &__shape{
+        width: 15rem;
+        height: 15rem;
+        // background-color: orangered;
+        float: left;
+        -webkit-shape-outside: circle(50% at 50% 50%); 
+        shape-outside: circle(50% at 50% 50%); // where the content floats arnd the circle
+        
+        -webkit-clip-path: circle(50% at 50% 50%);  // how does the circle actually looks like
+        clip-path: circle(50% at 50% 50%);  
+
+        transform: translateX(-3rem) skewX(12deg);
+        position: relative;
+    }
+
+    &__img{
+     // the image is inside the shape parent, and the width of image is 100% of shape.
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        transition: all .5s;
+    }
+
+    &__text{
+        transform: skewX(12deg) 
+        // backface-visibility: hidden;
+
+    }
+
+    &__caption{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        text-align: center;
+        color: $color-white;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden;
+
+    }
+
+    &:hover &__caption{
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__img{
+        transform: translateX(-4rem) scale(1);
+        filter: blur(1px) brightness(80%);  
+    }
+}
